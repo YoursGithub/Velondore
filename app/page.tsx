@@ -5,10 +5,10 @@ import Navbar, { Logo } from "./components/Navbar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F9F8F6] text-[#2A2A2A] selection:bg-[#4A3F35] selection:text-white">
+    <div className="min-h-screen bg-[#F9F8F6] text-[#2A2A2A] selection:bg-[#4A3F35] selection:text-white overflow-x-hidden">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-12">
+      <main className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center justify-between py-10 md:py-16 gap-10 md:gap-20">
           <div className="flex-1 space-y-8 md:space-y-10 text-center md:text-left">
@@ -29,20 +29,20 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="flex-1 relative flex justify-center items-center h-[500px]">
-            {/* Concentric Circles */}
-            <div className="concentric-circle w-[460px] h-[460px] opacity-100" />
-            <div className="concentric-circle w-[420px] h-[420px] opacity-80" />
-            <div className="concentric-circle w-[380px] h-[380px] opacity-60" />
-            <div className="concentric-circle w-[340px] h-[340px] opacity-40 border-dashed" />
+          <div className="flex-1 relative flex justify-center items-center h-[360px] sm:h-[500px] w-full overflow-hidden">
+            {/* Concentric Circles — shrunk for mobile */}
+            <div className="concentric-circle w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] opacity-100" />
+            <div className="concentric-circle w-[190px] h-[190px] sm:w-[380px] sm:h-[380px] opacity-80" />
+            <div className="concentric-circle w-[160px] h-[160px] sm:w-[340px] sm:h-[340px] opacity-60" />
+            <div className="concentric-circle w-[130px] h-[130px] sm:w-[300px] sm:h-[300px] opacity-40 border-dashed" />
             
-            <div className="relative z-10 w-[320px] h-[320px] rounded-full overflow-hidden flex items-center justify-center bg-transparent group animate-scale-in delay-500">
+            <div className="relative z-10 w-[200px] h-[200px] sm:w-[320px] sm:h-[320px] rounded-full overflow-hidden flex items-center justify-center bg-transparent group animate-scale-in delay-500">
               <Image 
                 src="/hero-chair.png" 
                 alt="Featured Chair" 
-                width={380} 
-                height={380} 
-                className="object-contain relative z-20 group-hover:scale-110 transition-transform duration-700"
+                width={300} 
+                height={300} 
+                className="object-contain relative z-20 group-hover:scale-110 transition-transform duration-700 sm:w-[380px] sm:h-[380px]"
               />
               <div className="absolute inset-0 bg-[#F2EFE9] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
@@ -51,13 +51,15 @@ export default function Home() {
 
         {/* Category Filter */}
         <ScrollReveal delay={200}>
-          <div className="flex items-center gap-16 border-b border-[#4A3F35]/10 py-10 text-sm font-medium overflow-x-auto no-scrollbar scroll-smooth">
-            {['Chair', 'Couch', 'Table', 'Light', 'Bed', 'Closet'].map((cat, i) => (
-              <button key={cat} className={`whitespace-nowrap pb-2 transition-all relative ${i === 0 ? 'text-[#2A2A2A]' : 'text-[#4A3F35]/30 hover:text-[#4A3F35]/60'}`}>
-                {cat}
-                {i === 0 && <div className="absolute -bottom-[41px] left-0 right-0 h-0.5 bg-[#2A2A2A]" />}
-              </button>
-            ))}
+          <div className="w-full overflow-x-auto no-scrollbar border-b border-[#4A3F35]/10">
+            <div className="flex items-center gap-8 md:gap-16 py-10 text-sm font-medium min-w-max">
+              {['Chair', 'Couch', 'Table', 'Light', 'Bed', 'Closet'].map((cat, i) => (
+                <button key={cat} className={`whitespace-nowrap pb-2 transition-all relative ${i === 0 ? 'text-[#2A2A2A]' : 'text-[#4A3F35]/30 hover:text-[#4A3F35]/60'}`}>
+                  {cat}
+                  {i === 0 && <div className="absolute -bottom-[41px] left-0 right-0 h-0.5 bg-[#2A2A2A]" />}
+                </button>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
 
@@ -93,12 +95,14 @@ export default function Home() {
 
         {/* Wood Separator Pattern */}
         <ScrollReveal delay={100}>
-          <div className="grid grid-cols-4 sm:flex justify-between items-center py-12 px-4 opacity-70 grayscale contrast-125 gap-4">
-            {[...Array(12)].map((_, i) => (
-              <div key={i} className={`w-12 h-12 relative overflow-hidden rounded-full border border-[#4A3F35]/10 ${i >= 4 ? 'hidden sm:block' : ''}`}>
-                <Image src="/wood-grain.png" alt="wood ring" layout="fill" className="object-cover scale-150 rotate-45" />
-              </div>
-            ))}
+          <div className="overflow-hidden">
+            <div className="grid grid-cols-4 sm:flex justify-between items-center py-12 px-4 opacity-70 grayscale contrast-125 gap-4">
+              {[...Array(12)].map((_, i) => (
+                <div key={i} className={`w-10 h-10 sm:w-12 sm:h-12 relative overflow-hidden rounded-full border border-[#4A3F35]/10 flex-shrink-0 ${i >= 4 ? 'hidden sm:block' : ''}`}>
+                  <Image src="/wood-grain.png" alt="wood ring" layout="fill" className="object-cover scale-150 rotate-45" />
+                </div>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
 
@@ -113,7 +117,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/5" />
                 
                 {/* Floating Card */}
-                <div className="absolute top-10 right-10 p-8 rounded-3xl bg-black/20 backdrop-blur-2xl border border-white/10 text-white min-w-[240px] animate-fade-up delay-500">
+                <div className="absolute top-4 right-4 sm:top-10 sm:right-10 p-4 sm:p-8 rounded-3xl bg-black/20 backdrop-blur-2xl border border-white/10 text-white min-w-[180px] sm:min-w-[240px] animate-fade-up delay-500">
                   <h3 className="text-xl font-medium tracking-tight">Couch Tokyo</h3>
                   <p className="text-xs text-white/60 max-w-[180px] leading-relaxed mt-2 font-light">Crafted from the base of a cedar tree trunk</p>
                   <div className="mt-6 flex items-center justify-between">
@@ -125,10 +129,10 @@ export default function Home() {
                 </div>
              </div>
              
-             {/* Bento Grid Side */}
-             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 md:grid-rows-2 gap-10 h-auto md:h-full">
+             {/* Bento Grid Side — min-w-0 prevents grid blowout */}
+             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 md:grid-rows-2 gap-10 h-auto md:h-full min-w-0">
                 {/* Item 2 */}
-                <div className="relative rounded-[40px] overflow-hidden group h-[300px] md:h-full cursor-pointer animate-scale-in delay-300">
+                <div className="relative rounded-[40px] overflow-hidden group h-[300px] md:h-full cursor-pointer animate-scale-in delay-300 min-w-0">
                   <Image src="/room-living.png" alt="Shelf Chair Yuki" layout="fill" objectFit="cover" />
                   <div className="absolute inset-0 bg-black/5" />
                   
@@ -145,11 +149,11 @@ export default function Home() {
                 </div>
 
                 {/* Sub Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <div className="grid grid-cols-2 gap-6 sm:gap-10 min-w-0">
                   <div className="bg-[#F2EFE9] rounded-[40px] relative overflow-hidden flex items-center justify-center group cursor-pointer h-[200px] md:h-auto">
                     <Image src="/chair-nora.png" alt="Table Osaka" width={220} height={220} className="group-hover:scale-110 transition-transform duration-500 p-4" />
                   </div>
-                  <div className="relative h-full flex flex-col justify-end pb-8 group cursor-pointer border-b md:border-b-0 border-[#4A3F35]/10">
+                  <div className="relative h-full flex flex-col justify-end pb-8 group cursor-pointer border-b md:border-b-0 border-[#4A3F35]/10 min-w-0">
                     <div className="space-y-4">
                       <div>
                         <h3 className="text-base font-medium tracking-tight">Table Osaka</h3>
