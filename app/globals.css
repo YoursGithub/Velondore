@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
+@theme {
+  --color-noma-cream: #F9F8F6;
+  --color-noma-beige: #F2EFE9;
+  --color-noma-brown: #4A3F35;
+  --color-noma-dark: #2A2A2A;
+  --color-noma-accent: #8B7E74;
+  --font-outfit: var(--font-outfit);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: var(--color-noma-cream);
+  --foreground: var(--color-noma-dark);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-noma-cream);
+  color: var(--color-noma-dark);
+  font-family: var(--font-outfit), sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-noma-brown/10;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at center, rgba(242, 239, 233, 1) 0%, rgba(249, 248, 246, 0) 70%);
+}
+
+.concentric-circle {
+  border: 1px solid rgba(74, 63, 53, 0.08);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
