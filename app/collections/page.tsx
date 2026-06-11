@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const Logo = () => (
-  <Link href="/" className="flex items-center gap-2 text-[#2A2A2A]">
-    <div className="w-9 h-9 rounded-full bg-[#4A3F35] flex items-center justify-center text-white font-bold text-sm">V</div>
-    <span className="text-2xl font-bold tracking-tighter uppercase">Velondore</span>
-  </Link>
-);
+import Navbar from "../components/Navbar";
 
 export default function Collections() {
   const categories = ['All Products', 'Chairs', 'Couches', 'Tables', 'Lighting', 'Bedroom'];
@@ -24,29 +18,7 @@ export default function Collections() {
 
   return (
     <div className="min-h-screen bg-[#F9F8F6] text-[#2A2A2A] selection:bg-[#4A3F35] selection:text-white">
-      {/* Navigation */}
-      <nav className="max-w-[1440px] mx-auto px-6 md:px-12 py-6 md:py-10 flex flex-col gap-6 md:gap-0">
-        <div className="flex items-center justify-between w-full">
-          <Logo />
-          <div className="flex md:hidden items-center gap-4">
-            <button className="bg-[#4A3F35] text-white p-2.5 rounded-md hover:bg-[#3D342C] transition-colors shadow-sm">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-            </button>
-          </div>
-        </div>
-        
-        <div className="flex md:absolute md:left-1/2 md:-translate-x-1/2 items-center gap-8 overflow-x-auto no-scrollbar w-full md:w-auto pb-2 md:pb-0 border-t md:border-t-0 border-[#4A3F35]/5 pt-4 md:pt-0">
-           <Link href="/collections" className="text-sm font-semibold border-b-2 border-[#4A3F35] pb-1 whitespace-nowrap">Collections</Link>
-           <Link href="#" className="text-sm font-medium text-[#4A3F35]/40 hover:text-[#4A3F35] transition-colors whitespace-nowrap">About</Link>
-           <Link href="#" className="text-sm font-medium text-[#4A3F35]/40 hover:text-[#4A3F35] transition-colors whitespace-nowrap">Journal</Link>
-        </div>
-
-        <div className="hidden md:flex items-center gap-4 w-full md:w-auto justify-end">
-          <button className="bg-[#4A3F35] text-white p-2.5 rounded-md hover:bg-[#3D342C] transition-colors shadow-sm">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-          </button>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="max-w-[1440px] mx-auto px-6 md:px-12 py-12">
         {/* Mobile Filter Trigger */}
